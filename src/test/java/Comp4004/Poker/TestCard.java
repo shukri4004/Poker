@@ -10,4 +10,10 @@ public class TestCard extends TestCase {
 			assertEquals("S", c.getSuit());
 		}
 		
+		public void testGetRank() {
+			
+			Card c = new Card("D", "4");
+			assertEquals("4", c.getRank());
+		}
+		
 }
