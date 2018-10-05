@@ -14,4 +14,7 @@ public class Card {
 		return this.suit;
 	}
 	
+	public String getRank() {
+		return this.rank;
+	}
 }
