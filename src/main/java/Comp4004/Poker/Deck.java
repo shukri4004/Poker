@@ -9,7 +9,7 @@ public class Deck {
 	
 	Deck(){
 	int i = 0;
-	
+	// The cards in the deck will be sorted by their values: e.g. lowest card is C2 in the first position
 	for(int y = 0; y < 13; y++){
 		for(int x = 0; x < 4; x++) {
 			cardHolder[i] = new Card();

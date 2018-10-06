@@ -6,15 +6,26 @@ public class TestHand extends TestCase {
 
 	public void testTypeOfHand() {//There are ten types of hands: 1=Royal Flush, 2=Straight Flush, ... 
 		Hand[] h = new Hand[10];
+		h[0] = new Hand();
 		assertEquals(1, h[0].typeOfHand());
-		assertEquals(2, h[1].typeOfHand());
-		assertEquals(3, h[2].typeOfHand());
-		assertEquals(4, h[3].typeOfHand());
-		assertEquals(5, h[4].typeOfHand());
-		assertEquals(6, h[5].typeOfHand());
-		assertEquals(7, h[6].typeOfHand());
-		assertEquals(8, h[7].typeOfHand());
-		assertEquals(9, h[8].typeOfHand());
-		assertEquals(10, h[9].typeOfHand());
+		h[1] = new Hand();
+		assertEquals(1, h[1].typeOfHand());
+		h[2] = new Hand();
+		assertEquals(1, h[2].typeOfHand());
+		h[3] = new Hand();
+		assertEquals(1, h[3].typeOfHand());
+		h[4] = new Hand();
+		assertEquals(1, h[4].typeOfHand());
+		h[5] = new Hand();
+		assertEquals(1, h[5].typeOfHand());
+		h[6] = new Hand();
+		assertEquals(1, h[6].typeOfHand());
+		h[7] = new Hand();
+		assertEquals(1, h[7].typeOfHand());
+		h[8] = new Hand();
+		assertEquals(1, h[8].typeOfHand());
+		h[9] = new Hand();
+		assertEquals(1, h[9].typeOfHand());
+
 	}
 }
