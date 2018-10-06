@@ -10,6 +10,8 @@ public class Card {
 		this.rank = rank;
 	}
 	
+	Card(){};
+	
 	public String getSuit() {
 		return this.suit;
 	}
