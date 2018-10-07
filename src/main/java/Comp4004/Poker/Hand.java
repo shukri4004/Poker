@@ -297,5 +297,6 @@ public class Hand {
 		else
 			return false;
 	}
+
 	
-}
+} // end of Hand class

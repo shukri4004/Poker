@@ -67,4 +67,14 @@ public class TestHand extends TestCase {
 		assertEquals(10, h[9].typeOfHand());
 
 	}
-}
+	
+	public void testApplyStrategy() {
+		Hand h = new Hand();
+		//Providing a Royal Flush hand and expecting no change in the hand when applying strategies
+		for(int i=0; i<5; i++)
+			h.cards[i].suit="H";
+		h.cards[0].rank="10"; h.cards[1].rank="J"; h.cards[2].rank="Q"; h.cards[3].rank="K"; h.cards[4].rank="Ace";
+		assertEquals(h, h.applyStrategy());
+	}
+
+} // end of TestHand class
