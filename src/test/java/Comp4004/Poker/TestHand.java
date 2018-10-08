@@ -109,7 +109,7 @@ public class TestHand extends TestCase {
 		//oneAwayFromFlush
 		h.cards[0].rank="2"; h.cards[1].rank="J"; h.cards[2].rank="7"; h.cards[3].rank="10"; h.cards[4].rank="Ace";
 		h.cards[0].suit="H"; h.cards[1].suit="H"; h.cards[2].suit="H"; h.cards[3].suit="C"; h.cards[4].suit="H";
-		h.values[0]=12; h.values[1]=37; h.values[2]=35; h.values[3]=32; h.values[4]=48;
+		h.values[0]=2; h.values[1]=38; h.values[2]=22; h.values[3]=32; h.values[4]=50;
 		for(int x=0; x<5; x++) {
 			hCopyVal[x]=h.values[x];
 		}
@@ -123,9 +123,9 @@ public class TestHand extends TestCase {
 		assertEquals(true, blComp);
 		
 		//oneAwayFromStraight
-		h.cards[0].rank="5"; h.cards[1].rank="6"; h.cards[2].rank="7"; h.cards[3].rank="2"; h.cards[4].rank="9";
+		h.cards[0].rank="5"; h.cards[1].rank="6"; h.cards[2].rank="7"; h.cards[3].rank="2"; h.cards[4].rank="8";
 		h.cards[0].suit="H"; h.cards[1].suit="C"; h.cards[2].suit="S"; h.cards[3].suit="C"; h.cards[4].suit="H";
-		h.values[0]=14; h.values[1]=16; h.values[2]=23; h.values[3]=0; h.values[4]=30;
+		h.values[0]=14; h.values[1]=16; h.values[2]=23; h.values[3]=0; h.values[4]=26;
 		for(int x=0; x<5; x++) {
 			hCopyVal[x]=h.values[x];
 		}

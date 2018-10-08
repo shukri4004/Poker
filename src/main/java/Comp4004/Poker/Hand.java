@@ -385,6 +385,88 @@ public class Hand {
 				}
 			}
 		}
+		else if(oneCardAwayFromFlush()) {
+			for(int x = 1; x<5; x++) {
+				if(this.cards[0].getSuit()==this.cards[x].getSuit())
+					a=1;
+			}
+			for(int x = 0; x<5; x++) {
+				if(this.cards[1].getSuit()==this.cards[x].getSuit() && x!=1)
+					b=1;
+			}
+			for(int x = 0; x<5; x++) {
+				if(this.cards[2].getSuit()==this.cards[x].getSuit() && x!=2)
+					c=1;
+			}
+			for(int x = 0; x<5; x++) {
+				if(this.cards[3].getSuit()==this.cards[x].getSuit() && x!=3)
+					y=1;
+			}
+			if(a==0)
+				i=0;
+			else if(b==0)
+				i=1;
+			else if(c==0)
+				i=2;
+			else if(y==0)
+				i=3;
+			else
+				i=4;
+
+				
+			//Exchange the card
+			rd = rand.nextInt(52);
+			this.cards[i] = d.getCard(rd);
+			this.values[i] = rd;
+	}
+	else if(oneCardAwayFromStraight()) {
+	//Get the index i of the card to exchange
+		int arr[]= new int[5];
+		int arr2[]= new int[5];
+		for(int x = 0; x<5; x++) {
+			if(this.cards[x].getRank()=="2")
+				arr[x]=1;
+			if(this.cards[x].getRank()=="3")
+				arr[x]=2;
+			if(this.cards[x].getRank()=="4")
+				arr[x]=3;
+			if(this.cards[x].getRank()=="5")
+				arr[x]=4;
+			if(this.cards[x].getRank()=="6")
+				arr[x]=5;
+			if(this.cards[x].getRank()=="7")
+				arr[x]=6;
+			if(this.cards[x].getRank()=="8")
+				arr[x]=7;
+			if(this.cards[x].getRank()=="9")
+				arr[x]=8;
+			if(this.cards[x].getRank()=="10")
+				arr[x]=9;
+			if(this.cards[x].getRank()=="J")
+				arr[x]=10;
+			if(this.cards[x].getRank()=="Q")
+				arr[x]=11;
+			if(this.cards[x].getRank()=="K")
+				arr[x]=12;
+			if(this.cards[x].getRank()=="Ace")
+				arr[x]=13;
+	} 
+		for(int x = 0; x<5; x++) {
+			arr2[x]=arr[x];
+		}
+		Arrays.sort(arr); // Sorting smallest to largest to find a sequence, if any
+		if(arr[0]+1!=arr[1])
+			i=0;
+		else
+			i=4;
+		for(int x = 0; x<5; x++) {
+			if(arr2[x]==arr[i]) {
+				rd = rand.nextInt(52);
+				this.cards[x] = d.getCard(rd);
+				this.values[x] = rd;
+			}
+		}
+	}
 	}
 	
 	public boolean oneCardAwayFromFullHouse() {
@@ -394,5 +476,72 @@ public class Hand {
 			return false;
 	}
 	
+public boolean oneCardAwayFromFlush() {
+		
+		int s = 0;
+		int h = 0;
+		int d = 0;
+		int c = 0;
+		
+		for(int x = 0; x<5; x++) {
+			if(this.cards[x].getSuit()=="S")
+				s++;
+			if(this.cards[x].getSuit()=="H")
+				h++;
+			if(this.cards[x].getSuit()=="D")
+				d++;
+			if(this.cards[x].getSuit()=="C")
+				c++;
+		}
+		if(s==4||h==4||d==4||c==4)
+			return true;
+		else
+			return false;
+	}
+
+public boolean oneCardAwayFromStraight() {//check if one away from straight
+										//(Royal Flush and Straight Flush are unnecessary to test because having a Straight means having them too)
+	int a[]= new int[5];
+	for(int x = 0; x<5; x++) {
+		if(this.cards[x].getRank()=="2")
+			a[x]=1;
+		if(this.cards[x].getRank()=="3")
+			a[x]=2;
+		if(this.cards[x].getRank()=="4")
+			a[x]=3;
+		if(this.cards[x].getRank()=="5")
+			a[x]=4;
+		if(this.cards[x].getRank()=="6")
+			a[x]=5;
+		if(this.cards[x].getRank()=="7")
+			a[x]=6;
+		if(this.cards[x].getRank()=="8")
+			a[x]=7;
+		if(this.cards[x].getRank()=="9")
+			a[x]=8;
+		if(this.cards[x].getRank()=="10")
+			a[x]=9;
+		if(this.cards[x].getRank()=="J")
+			a[x]=10;
+		if(this.cards[x].getRank()=="Q")
+			a[x]=11;
+		if(this.cards[x].getRank()=="K")
+			a[x]=12;
+		if(this.cards[x].getRank()=="Ace")
+			a[x]=13;
+}
+	 Arrays.sort(a);
+	 int y = 0;
+	 for(int x = 0; x<4; x++) {
+			if(a[x]+1==a[x+1])
+				y++;
+	 }
+	 if(y==3)//This means there are four cards in sequential order
+			return true;
+		else
+			return false;
+	
+}
+
 
 } // end of Hand class
