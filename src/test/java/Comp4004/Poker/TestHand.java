@@ -70,11 +70,40 @@ public class TestHand extends TestCase {
 	
 	public void testApplyStrategy() {
 		Hand h = new Hand();
+		int[] hCopyVal = new int[5];
+		boolean blComp = true;
 		//Providing a Royal Flush hand and expecting no change in the hand when applying strategies
 		for(int i=0; i<5; i++)
 			h.cards[i].suit="H";
 		h.cards[0].rank="10"; h.cards[1].rank="J"; h.cards[2].rank="Q"; h.cards[3].rank="K"; h.cards[4].rank="Ace";
-		assertEquals(h, h.applyStrategy());
+		//copy h to h2 before applying strategy. Copying h.values to h2.values will be enough. Refer to how "values" member is created in the Hand constructor
+		for(int x=0; x<5; x++) {
+			hCopyVal[x]=h.values[x];
+		}
+		h.applyStrategy();
+		//h.values should be updated, if necessary according to the strategy. If royal flush, then no changes.
+		//compare values before and after strategy
+		for(int x=0; x<5; x++) {
+			if(hCopyVal[x]!=h.values[x])
+				blComp=false;
+		} 
+		//assertEquals(true, blComp);
+		
+		//oneAwayFromFullHouse
+		h.cards[0].rank="10"; h.cards[1].rank="J"; h.cards[2].rank="10"; h.cards[3].rank="10"; h.cards[4].rank="Ace";
+		h.cards[0].suit="H"; h.cards[1].suit="D"; h.cards[2].suit="S"; h.cards[3].suit="C"; h.cards[4].suit="C";
+		h.values[0]=12; h.values[1]=37; h.values[2]=35; h.values[3]=32; h.values[4]=48;
+		for(int x=0; x<5; x++) {
+			hCopyVal[x]=h.values[x];
+		}
+		
+		h.applyStrategy();
+		blComp=true;
+		if(hCopyVal[1]==h.values[1] || hCopyVal[4]==h.values[4])
+			blComp=false;
+		if(hCopyVal[0]!=h.values[0] ||hCopyVal[2]!=h.values[2] ||hCopyVal[3]!=h.values[3])
+			blComp=false;
+		assertEquals(true, blComp);
 	}
 
 } // end of TestHand class

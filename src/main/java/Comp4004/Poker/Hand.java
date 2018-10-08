@@ -17,20 +17,6 @@ public class Hand {
 		this.cards[x] = d.cardHolder[rd];
 		values[x] = rd;	
 	}
-	//sort values of the hand from largest to smallest. It will be useful to compare hands and to get the type of hand
-	int temp;
-    for (int i = 0; i < 5; i++) 
-    {
-        for (int j = i + 1; j < 5; j++) 
-        {
-            if (values[i] < values[j]) 
-            {
-                temp = values[i];
-                values[i] = values[j];
-                values[j] = temp;
-            }
-        }
-    }
 	
 	}
 	
@@ -298,5 +284,115 @@ public class Hand {
 			return false;
 	}
 
+	public void applyStrategy() {
+		Deck d = new Deck();
+		Random rand = new Random();
+		int rd;
+		int a = 0;
+		int b = 0;
+		int c = 0;
+		int y = 0;
+		int z = 0;
+		int i;
+		
+		if(this.typeOfHand()<=6); //Straight or better
+			
+		else if(oneCardAwayFromFullHouse()) {
+			//Three of a kind and Two pair are unnecessary to test since NOT being one card away 
+			//	from Full House means the hand cannot be either of them
+			if(isTwoPair()) {
+				for(int x = 1; x<5; x++) {
+					if(this.cards[0].getRank()==this.cards[x].getRank())
+						a=1;
+				}
+				for(int x = 0; x<5; x++) {
+					if(this.cards[1].getRank()==this.cards[x].getRank() && x!=1)
+						b=1;
+				}
+				for(int x = 0; x<5; x++) {
+					if(this.cards[2].getRank()==this.cards[x].getRank() && x!=2)
+						c=1;
+				}
+				for(int x = 0; x<5; x++) {
+					if(this.cards[3].getRank()==this.cards[x].getRank() && x!=3)
+						y=1;
+				}
+				if(a==0)
+					i=0;
+				else if(b==0)
+					i=1;
+				else if(c==0)
+					i=2;
+				else if(y==0)
+					i=3;
+				else
+					i=4;
+					
+				//Exchange the card
+				rd = rand.nextInt(52);
+				this.cards[i] = d.getCard(rd);
+				// update the "values" member
+				this.values[i] = rd;
+			}
+			
+			else //isThreeOfKind()), change the two remaining cards
+			{
+				for(int x = 1; x<5; x++) {
+					if(this.cards[0].getRank()==this.cards[x].getRank())
+						a=1;
+				}
+				for(int x = 0; x<5; x++) {
+					if(this.cards[1].getRank()==this.cards[x].getRank() && x!=1)
+						b=1;
+				}
+				for(int x = 0; x<5; x++) {
+					if(this.cards[2].getRank()==this.cards[x].getRank() && x!=2)
+						c=1;
+				}
+				for(int x = 0; x<5; x++) {
+					if(this.cards[3].getRank()==this.cards[x].getRank() && x!=3)
+						y=1;
+				}
+				for(int x = 0; x<4; x++) {
+					if(this.cards[4].getRank()==this.cards[x].getRank())
+						z=1;
+				}
+				if(a==0){
+					rd = rand.nextInt(52);
+					this.cards[0] = d.getCard(rd);
+					// update the "values" member
+					this.values[0] = rd;
+				}
+				if(b==0){
+					rd = rand.nextInt(52);
+					this.cards[1] = d.getCard(rd);
+					this.values[1] = rd;
+				}
+				if(c==0){
+					rd = rand.nextInt(52);
+					this.cards[2] = d.getCard(rd);
+					this.values[2] = rd;
+				}
+				if(y==0){
+					rd = rand.nextInt(52);
+					this.cards[3] = d.getCard(rd);
+					this.values[3] = rd;
+				}
+				if(z==0){
+					rd = rand.nextInt(52);
+					this.cards[4] = d.getCard(rd);
+					this.values[4] = rd;
+				}
+			}
+		}
+	}
 	
+	public boolean oneCardAwayFromFullHouse() {
+		if(this.typeOfHand()==7||this.typeOfHand()==8)
+			return true;
+		else
+			return false;
+	}
+	
+
 } // end of Hand class
