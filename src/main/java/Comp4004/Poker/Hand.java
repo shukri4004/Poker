@@ -532,11 +532,16 @@ public boolean oneCardAwayFromStraight() {//check if one away from straight
 }
 	 Arrays.sort(a);
 	 int y = 0;
+	 int z = 0;
+	 int n;
 	 for(int x = 0; x<4; x++) {
 			if(a[x]+1==a[x+1])
 				y++;
+			if(a[x]+2==a[x+1])
+				z++;
 	 }
-	 if(y==3)//This means there are four cards in sequential order
+	 n=y+z;
+	 if(n==3 && z<=1)//This means there are four cards in sequential order
 			return true;
 		else
 			return false;

@@ -118,12 +118,12 @@ public class TestHand extends TestCase {
 		blComp=true;
 		if(hCopyVal[3]==h.values[3])
 			blComp=false;
-		if(hCopyVal[0]!=h.values[0] ||hCopyVal[1]!=h.values[1] ||hCopyVal[2]!=h.values[2]||hCopyVal[4]!=h.values[4])
+		if(hCopyVal[0]!=h.values[0]||hCopyVal[1]!=h.values[1]||hCopyVal[2]!=h.values[2]||hCopyVal[4]!=h.values[4])
 			blComp=false;
 		assertEquals(true, blComp);
 		
 		//oneAwayFromStraight
-		h.cards[0].rank="5"; h.cards[1].rank="6"; h.cards[2].rank="7"; h.cards[3].rank="2"; h.cards[4].rank="8";
+		h.cards[0].rank="5"; h.cards[1].rank="6"; h.cards[2].rank="7"; h.cards[3].rank="2"; h.cards[4].rank="9";
 		h.cards[0].suit="H"; h.cards[1].suit="C"; h.cards[2].suit="S"; h.cards[3].suit="C"; h.cards[4].suit="H";
 		h.values[0]=14; h.values[1]=16; h.values[2]=23; h.values[3]=0; h.values[4]=26;
 		for(int x=0; x<5; x++) {
@@ -137,6 +137,70 @@ public class TestHand extends TestCase {
 		if(hCopyVal[0]!=h.values[0] ||hCopyVal[1]!=h.values[1] ||hCopyVal[2]!=h.values[2]||hCopyVal[4]!=h.values[4])
 			blComp=false;
 		assertEquals(true, blComp);
+		
+		//isThreeOfSameSuit
+		h.cards[0].rank="2"; h.cards[1].rank="6"; h.cards[2].rank="7"; h.cards[3].rank="4"; h.cards[4].rank="J";
+		h.cards[0].suit="C"; h.cards[1].suit="C"; h.cards[2].suit="S"; h.cards[3].suit="C"; h.cards[4].suit="H";
+		h.values[0]=0; h.values[1]=16; h.values[2]=23; h.values[3]=8; h.values[4]=38;
+		for(int x=0; x<5; x++) {
+			hCopyVal[x]=h.values[x];
+		}
+		
+		h.applyStrategy();
+		blComp=true;
+		if(hCopyVal[2]==h.values[2]||hCopyVal[4]==h.values[4])
+			blComp=false;
+		if(hCopyVal[0]!=h.values[0] ||hCopyVal[1]!=h.values[1] ||hCopyVal[3]!=h.values[3])
+			blComp=false;
+		assertEquals(true, blComp);
+		
+		//isThreeCardSequence
+		h.cards[0].rank="2"; h.cards[1].rank="6"; h.cards[2].rank="7"; h.cards[3].rank="8"; h.cards[4].rank="J";
+		h.cards[0].suit="C"; h.cards[1].suit="D"; h.cards[2].suit="S"; h.cards[3].suit="C"; h.cards[4].suit="H";
+		h.values[0]=0; h.values[1]=17; h.values[2]=23; h.values[3]=24; h.values[4]=38;
+		for(int x=0; x<5; x++) {
+			hCopyVal[x]=h.values[x];
+		}
+		
+		h.applyStrategy();
+		blComp=true;
+		if(hCopyVal[0]==h.values[0]||hCopyVal[4]==h.values[4])
+			blComp=false;
+		if(hCopyVal[1]!=h.values[1] ||hCopyVal[2]!=h.values[2] ||hCopyVal[3]!=h.values[3])
+			blComp=false;
+		assertEquals(true, blComp);
+		
+		//One pair
+		h.cards[0].rank="2"; h.cards[1].rank="6"; h.cards[2].rank="6"; h.cards[3].rank="8"; h.cards[4].rank="J";
+		h.cards[0].suit="C"; h.cards[1].suit="D"; h.cards[2].suit="S"; h.cards[3].suit="C"; h.cards[4].suit="H";
+		h.values[0]=0; h.values[1]=17; h.values[2]=19; h.values[3]=24; h.values[4]=38;
+		for(int x=0; x<5; x++) {
+			hCopyVal[x]=h.values[x];
+		}
+		
+		h.applyStrategy();
+		blComp=true;
+		if(hCopyVal[0]==h.values[0]||hCopyVal[3]==h.values[3]||hCopyVal[4]==h.values[4])
+			blComp=false;
+		if(hCopyVal[1]!=h.values[1]||hCopyVal[2]!=h.values[2])
+			blComp=false;
+		assertEquals(true, blComp);
+		
+		//High Card
+				h.cards[0].rank="2"; h.cards[1].rank="5"; h.cards[2].rank="6"; h.cards[3].rank="8"; h.cards[4].rank="J";
+				h.cards[0].suit="C"; h.cards[1].suit="D"; h.cards[2].suit="S"; h.cards[3].suit="C"; h.cards[4].suit="H";
+				h.values[0]=0; h.values[1]=13; h.values[2]=19; h.values[3]=24; h.values[4]=38;
+				for(int x=0; x<5; x++) {
+					hCopyVal[x]=h.values[x];
+				}
+				
+				h.applyStrategy();
+				blComp=true;
+				if(hCopyVal[0]==h.values[0]||hCopyVal[1]==h.values[1]||hCopyVal[2]==h.values[2])
+					blComp=false;
+				if(hCopyVal[3]!=h.values[3]||hCopyVal[4]!=h.values[4])
+					blComp=false;
+				assertEquals(true, blComp);
 	}
 
 } // end of TestHand class
