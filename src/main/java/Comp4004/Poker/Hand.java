@@ -1,6 +1,7 @@
 package Comp4004.Poker;
 
 import java.util.Random; //To get a random card from the deck
+
 import java.util.Arrays;
 
 public class Hand {
@@ -57,7 +58,7 @@ public class Hand {
 		int a = 0;
 		
 		for(int x = 0; x<5; x++) {
-			if(this.cards[x].getRank()=="10")
+			if(this.cards[x].getRank()=="T")
 				t++;
 			if(this.cards[x].getRank()=="J")
 				j++;
@@ -65,7 +66,7 @@ public class Hand {
 				q++;
 			if(this.cards[x].getRank()=="K")
 				k++;
-			if(this.cards[x].getRank()=="Ace")
+			if(this.cards[x].getRank()=="A")
 				a++;
 		}
 		if(t==1 && j==1 && q==1 && k==1 && a==1)//check if one of each card
@@ -79,39 +80,39 @@ public class Hand {
 		if(!isFlush())
 			return false;
 		
-		int a[]= new int[5];
+		int array[]= new int[5];
 		for(int x = 0; x<5; x++) {
 			if(this.cards[x].getRank()=="2")
-				a[x]=1;
+				array[x]=1;
 			if(this.cards[x].getRank()=="3")
-				a[x]=2;
+				array[x]=2;
 			if(this.cards[x].getRank()=="4")
-				a[x]=3;
+				array[x]=3;
 			if(this.cards[x].getRank()=="5")
-				a[x]=4;
+				array[x]=4;
 			if(this.cards[x].getRank()=="6")
-				a[x]=5;
+				array[x]=5;
 			if(this.cards[x].getRank()=="7")
-				a[x]=6;
+				array[x]=6;
 			if(this.cards[x].getRank()=="8")
-				a[x]=7;
+				array[x]=7;
 			if(this.cards[x].getRank()=="9")
-				a[x]=8;
-			if(this.cards[x].getRank()=="10")
-				a[x]=9;
+				array[x]=8;
+			if(this.cards[x].getRank()=="T")
+				array[x]=9;
 			if(this.cards[x].getRank()=="J")
-				a[x]=10;
+				array[x]=10;
 			if(this.cards[x].getRank()=="Q")
-				a[x]=11;
+				array[x]=11;
 			if(this.cards[x].getRank()=="K")
-				a[x]=12;
-			if(this.cards[x].getRank()=="Ace")
-				a[x]=13;
+				array[x]=12;
+			if(this.cards[x].getRank()=="A")
+				array[x]=13;
 	}
-		 Arrays.sort(a); // Sorting smallest to largest to find a sequence, if any
+		 Arrays.sort(array); // Sorting smallest to largest to find a sequence, if any
 		 int y = 0;
 		 for(int x = 0; x<4; x++) {
-				if(a[x]+1==a[x+1])
+				if(array[x]+1==array[x+1])
 					y++;
 		 }
 		 if(y==4)//This means there are five cards in sequential order
@@ -170,39 +171,39 @@ public class Hand {
 	}
 
 	public boolean isStraight() {
-		int a[]= new int[5];
+		int array[]= new int[5];
 		for(int x = 0; x<5; x++) {
 			if(this.cards[x].getRank()=="2")
-				a[x]=1;
+				array[x]=1;
 			if(this.cards[x].getRank()=="3")
-				a[x]=2;
+				array[x]=2;
 			if(this.cards[x].getRank()=="4")
-				a[x]=3;
+				array[x]=3;
 			if(this.cards[x].getRank()=="5")
-				a[x]=4;
+				array[x]=4;
 			if(this.cards[x].getRank()=="6")
-				a[x]=5;
+				array[x]=5;
 			if(this.cards[x].getRank()=="7")
-				a[x]=6;
+				array[x]=6;
 			if(this.cards[x].getRank()=="8")
-				a[x]=7;
+				array[x]=7;
 			if(this.cards[x].getRank()=="9")
-				a[x]=8;
-			if(this.cards[x].getRank()=="10")
-				a[x]=9;
+				array[x]=8;
+			if(this.cards[x].getRank()=="T")
+				array[x]=9;
 			if(this.cards[x].getRank()=="J")
-				a[x]=10;
+				array[x]=10;
 			if(this.cards[x].getRank()=="Q")
-				a[x]=11;
+				array[x]=11;
 			if(this.cards[x].getRank()=="K")
-				a[x]=12;
-			if(this.cards[x].getRank()=="Ace")
-				a[x]=13;
+				array[x]=12;
+			if(this.cards[x].getRank()=="A")
+				array[x]=13;
 	}
-		 Arrays.sort(a); // Sorting smallest to largest to find a sequence, if any
+		 Arrays.sort(array); // Sorting smallest to largest to find a sequence, if any
 		 int y = 0;
 		 for(int x = 0; x<4; x++) {
-				if(a[x]+1==a[x+1])
+				if(array[x]+1==array[x+1])
 					y++;
 		 }
 		 if(y==4)//This means there are five cards in sequential order
@@ -243,7 +244,6 @@ public class Hand {
 				if(this.cards[x].getRank()==this.cards[y].getRank() && x!=y)
 					{
 						a[x]=a[x]+1;
-						//s = s + a[x];
 					}
 		}
 		}
@@ -440,7 +440,7 @@ public class Hand {
 				arr[x]=7;
 			if(this.cards[x].getRank()=="9")
 				arr[x]=8;
-			if(this.cards[x].getRank()=="10")
+			if(this.cards[x].getRank()=="T")
 				arr[x]=9;
 			if(this.cards[x].getRank()=="J")
 				arr[x]=10;
@@ -448,7 +448,7 @@ public class Hand {
 				arr[x]=11;
 			if(this.cards[x].getRank()=="K")
 				arr[x]=12;
-			if(this.cards[x].getRank()=="Ace")
+			if(this.cards[x].getRank()=="A")
 				arr[x]=13;
 	} 
 		for(int x = 0; x<5; x++) {
@@ -539,7 +539,7 @@ public class Hand {
 				arr[x]=7;
 			if(this.cards[x].getRank()=="9")
 				arr[x]=8;
-			if(this.cards[x].getRank()=="10")
+			if(this.cards[x].getRank()=="T")
 				arr[x]=9;
 			if(this.cards[x].getRank()=="J")
 				arr[x]=10;
@@ -547,7 +547,7 @@ public class Hand {
 				arr[x]=11;
 			if(this.cards[x].getRank()=="K")
 				arr[x]=12;
-			if(this.cards[x].getRank()=="Ace")
+			if(this.cards[x].getRank()=="A")
 				arr[x]=13;
 	} 
 		
@@ -685,43 +685,43 @@ public boolean oneCardAwayFromFlush() {
 
 public boolean oneCardAwayFromStraight() {//check if one away from straight
 										//(Royal Flush and Straight Flush are unnecessary to test because having a Straight means having them too)
-	int a[]= new int[5];
+	int array[]= new int[5];
 	for(int x = 0; x<5; x++) {
 		if(this.cards[x].getRank()=="2")
-			a[x]=1;
+			array[x]=1;
 		if(this.cards[x].getRank()=="3")
-			a[x]=2;
+			array[x]=2;
 		if(this.cards[x].getRank()=="4")
-			a[x]=3;
+			array[x]=3;
 		if(this.cards[x].getRank()=="5")
-			a[x]=4;
+			array[x]=4;
 		if(this.cards[x].getRank()=="6")
-			a[x]=5;
+			array[x]=5;
 		if(this.cards[x].getRank()=="7")
-			a[x]=6;
+			array[x]=6;
 		if(this.cards[x].getRank()=="8")
-			a[x]=7;
+			array[x]=7;
 		if(this.cards[x].getRank()=="9")
-			a[x]=8;
-		if(this.cards[x].getRank()=="10")
-			a[x]=9;
+			array[x]=8;
+		if(this.cards[x].getRank()=="T")
+			array[x]=9;
 		if(this.cards[x].getRank()=="J")
-			a[x]=10;
+			array[x]=10;
 		if(this.cards[x].getRank()=="Q")
-			a[x]=11;
+			array[x]=11;
 		if(this.cards[x].getRank()=="K")
-			a[x]=12;
-		if(this.cards[x].getRank()=="Ace")
-			a[x]=13;
+			array[x]=12;
+		if(this.cards[x].getRank()=="A")
+			array[x]=13;
 }
-	 Arrays.sort(a);
+	 Arrays.sort(array);
 	 int y = 0;
 	 int z = 0;
 	 int n;
 	 for(int x = 0; x<4; x++) {
-			if(a[x]+1==a[x+1])
+			if(array[x]+1==array[x+1])
 				y++;
-			if(a[x]+2==a[x+1])
+			if(array[x]+2==array[x+1])
 				z++;
 	 }
 	 n=y+z;
@@ -755,39 +755,39 @@ public boolean isThreeOfSameSuit() {
 }
 
 public boolean isThreeCardSequence() {
-	int a[]= new int[5];
+	int array[]= new int[5];
 	for(int x = 0; x<5; x++) {
 		if(this.cards[x].getRank()=="2")
-			a[x]=1;
+			array[x]=1;
 		if(this.cards[x].getRank()=="3")
-			a[x]=2;
+			array[x]=2;
 		if(this.cards[x].getRank()=="4")
-			a[x]=3;
+			array[x]=3;
 		if(this.cards[x].getRank()=="5")
-			a[x]=4;
+			array[x]=4;
 		if(this.cards[x].getRank()=="6")
-			a[x]=5;
+			array[x]=5;
 		if(this.cards[x].getRank()=="7")
-			a[x]=6;
+			array[x]=6;
 		if(this.cards[x].getRank()=="8")
-			a[x]=7;
+			array[x]=7;
 		if(this.cards[x].getRank()=="9")
-			a[x]=8;
-		if(this.cards[x].getRank()=="10")
-			a[x]=9;
+			array[x]=8;
+		if(this.cards[x].getRank()=="T")
+			array[x]=9;
 		if(this.cards[x].getRank()=="J")
-			a[x]=10;
+			array[x]=10;
 		if(this.cards[x].getRank()=="Q")
-			a[x]=11;
+			array[x]=11;
 		if(this.cards[x].getRank()=="K")
-			a[x]=12;
-		if(this.cards[x].getRank()=="Ace")
-			a[x]=13;
+			array[x]=12;
+		if(this.cards[x].getRank()=="A")
+			array[x]=13;
 }
-	 Arrays.sort(a); // Sorting smallest to largest to find a sequence, if any
+	 Arrays.sort(array); // Sorting smallest to largest to find a sequence, if any
 	 int y = 0;
 	 for(int x = 0; x<4; x++) {
-			if(a[x]+1==a[x+1])
+			if(array[x]+1==array[x+1])
 				y++;
 	 }
 	 if(y==2)//This means there are three cards in sequential order
