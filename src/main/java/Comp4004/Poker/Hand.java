@@ -796,5 +796,519 @@ public boolean isThreeCardSequence() {
 			return false;
 }
 
+public void tieBreaker(Hand other) {// for comparing equally ranked hands
+	int x=0;
+	int y=0;
+	int z=0;
+	int a=0;
+	int n=0;
+	
+	if(this.typeOfHand()==1) {
+		Arrays.sort(this.values);
+		Arrays.sort(other.values);
+		if(this.values[0]>other.values[0])
+			System.out.println("AIP wins");
+		else if(this.values[0]<other.values[0])
+			System.out.println("Opponent wins");
+		else
+			System.out.println("It's a draw");
+	}
+		
+	else if(this.typeOfHand()==2||this.typeOfHand()==6) {
+		for(int i = 1; i<5; i++) {
+			if(this.cards[i].getRank()=="2") {
+				x++;
+				i=100;
+			}
+		}
+		for(int i = 1; i<5; i++) {
+			if(this.cards[i].getRank()=="3") {
+				x++;
+				i=100;
+			}
+		}
+		for(int i = 1; i<5; i++) {
+			if(this.cards[i].getRank()=="4") {
+				x++;
+				i=100;
+			}
+		}
+		for(int i = 1; i<5; i++) {
+			if(this.cards[i].getRank()=="5") {
+				x++;
+				i=100;
+			}
+		}
+		for(int i = 1; i<5; i++) {
+			if(this.cards[i].getRank()=="A") {
+				x++;
+				i=100;
+				y=i;
+			}
+		}
+		if(x==5) //If Ace is used along with 2, 3, 4, and 5, it becomes the lowest ranked card of the hand
+			this.values[y]=-1;
+		
+		x=0;
+		
+		for(int i = 1; i<5; i++) {
+			if(other.cards[i].getRank()=="2") {
+				x++;
+				i=100;
+			}
+		}
+		for(int i = 1; i<5; i++) {
+			if(other.cards[i].getRank()=="3") {
+				x++;
+				i=100;
+			}
+		}
+		for(int i = 1; i<5; i++) {
+			if(other.cards[i].getRank()=="4") {
+				x++;
+				i=100;
+			}
+		}
+		for(int i = 1; i<5; i++) {
+			if(other.cards[i].getRank()=="5") {
+				x++;
+				i=100;
+			}
+		}
+		for(int i = 1; i<5; i++) {
+			if(other.cards[i].getRank()=="A") {
+				x++;
+				i=100;
+				y=i;
+			}
+		}
+		if(x==5) //If Ace is used along with 2, 3, 4, and 5, it becomes the lowest ranked card of the hand
+			other.values[y]=-1;
+		
+		Arrays.sort(this.values);
+		Arrays.sort(other.values);
+		if(this.values[4]>other.values[4])
+			System.out.println("AIP wins");
+		else if(this.values[4]<other.values[4])
+			System.out.println("Opponent wins");
+		else
+			System.out.println("It's a draw");
+	}
+	
+	else if(this.typeOfHand()==3) {
+		for(int i = 1; i<5; i++) {
+			if(this.cards[0].getRank()==this.cards[i].getRank())
+				x=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[1].getRank()==this.cards[i].getRank() && i!=1)
+				y=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[2].getRank()==this.cards[i].getRank() && i!=2)
+				z=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[3].getRank()==this.cards[i].getRank() && i!=3)
+				a=1;
+		}
+		
+		if(x==0)
+			n=0;
+		else if(y==0)
+			n=1;
+		else if(z==0)
+			n=2;
+		else if(a==0)
+			n=3;
+		else
+			n=4;
+		this.values[n]=-1;
+		
+		x=0; y=0; z=0; a=0;
+		
+		for(int i = 1; i<5; i++) {
+			if(other.cards[0].getRank()==other.cards[i].getRank())
+				x=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[1].getRank()==other.cards[i].getRank() && i!=1)
+				y=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[2].getRank()==other.cards[i].getRank() && i!=2)
+				z=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[3].getRank()==other.cards[i].getRank() && i!=3)
+				a=1;
+		}
+		
+		if(x==0)
+			n=0;
+		else if(y==0)
+			n=1;
+		else if(z==0)
+			n=2;
+		else if(a==0)
+			n=3;
+		else
+			n=4;
+		other.values[n]=-1;
+		
+		Arrays.sort(this.values);
+		Arrays.sort(other.values);
+		
+		if(this.values[4]>other.values[4])
+			System.out.println("AIP wins");
+		else if(this.values[4]<other.values[4])
+			System.out.println("Opponent wins");
+		else
+			System.out.println("It's a draw");
+		
+	}
+	
+	else if(this.typeOfHand()==4||this.typeOfHand()==7){
+		for(int i = 1; i<5; i++) {
+			if(this.cards[0].getRank()==this.cards[i].getRank())
+				x++;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[1].getRank()==this.cards[i].getRank() && i!=1)
+				y++;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[2].getRank()==this.cards[i].getRank() && i!=2)
+				z++;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[3].getRank()==this.cards[i].getRank() && i!=3)
+				a++;
+		}
+		for(int i = 0; i<4; i++) {
+			if(this.cards[4].getRank()==this.cards[i].getRank())
+				n++;
+		}
+		
+		if(x<2)
+			this.values[0]=-1;
+		if(y<2)
+			this.values[1]=-1;
+		if(z<2)
+			this.values[2]=-1;
+		if(a<2)
+			this.values[3]=-1;
+		if(n<2)
+			this.values[4]=-1;
+		
+		x=0; y=0; z=0; a=0; n=0;
+		
+		for(int i = 1; i<5; i++) {
+			if(other.cards[0].getRank()==other.cards[i].getRank())
+				x++;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[1].getRank()==other.cards[i].getRank() && i!=1)
+				y++;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[2].getRank()==other.cards[i].getRank() && i!=2)
+				z++;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[3].getRank()==other.cards[i].getRank() && i!=3)
+				a++;
+		}
+		for(int i = 0; i<4; i++) {
+			if(other.cards[4].getRank()==other.cards[i].getRank())
+				n++;
+		}
+		
+		if(x<2)
+			other.values[0]=-1;
+		if(y<2)
+			other.values[1]=-1;
+		if(z<2)
+			other.values[2]=-1;
+		if(a<2)
+			other.values[3]=-1;
+		if(n<2)
+			other.values[4]=-1;
+		
+		Arrays.sort(this.values);
+		Arrays.sort(other.values);
+		
+		if(this.values[4]>other.values[4])
+			System.out.println("AIP wins");
+		else if(this.values[4]<other.values[4])
+			System.out.println("Opponent wins");
+		else
+			System.out.println("It's a draw");
+		
+	}	
+	
+	else if(this.typeOfHand()==5) {
+		int[] array = new int[5];
+		int[] array2 = new int[5];
+		for(int i = 0; i<5; i++) {
+			if(this.cards[i].getRank()=="2")
+				array[i]=1;
+			if(this.cards[i].getRank()=="3")
+				array[i]=2;
+			if(this.cards[i].getRank()=="4")
+				array[i]=3;
+			if(this.cards[i].getRank()=="5")
+				array[i]=4;
+			if(this.cards[i].getRank()=="6")
+				array[i]=5;
+			if(this.cards[i].getRank()=="7")
+				array[i]=6;
+			if(this.cards[i].getRank()=="8")
+				array[i]=7;
+			if(this.cards[i].getRank()=="9")
+				array[i]=8;
+			if(this.cards[i].getRank()=="T")
+				array[i]=9;
+			if(this.cards[i].getRank()=="J")
+				array[i]=10;
+			if(this.cards[i].getRank()=="Q")
+				array[i]=11;
+			if(this.cards[i].getRank()=="K")
+				array[i]=12;
+			if(this.cards[i].getRank()=="A")
+				array[i]=13;
+	}
+		Arrays.sort(array);
+		
+		for(int i = 0; i<5; i++) {
+			if(other.cards[i].getRank()=="2")
+				array2[i]=1;
+			if(other.cards[i].getRank()=="3")
+				array2[i]=2;
+			if(other.cards[i].getRank()=="4")
+				array2[i]=3;
+			if(other.cards[i].getRank()=="5")
+				array2[i]=4;
+			if(other.cards[i].getRank()=="6")
+				array2[i]=5;
+			if(other.cards[i].getRank()=="7")
+				array2[i]=6;
+			if(other.cards[i].getRank()=="8")
+				array2[i]=7;
+			if(other.cards[i].getRank()=="9")
+				array2[i]=8;
+			if(other.cards[i].getRank()=="T")
+				array2[i]=9;
+			if(other.cards[i].getRank()=="J")
+				array2[i]=10;
+			if(other.cards[i].getRank()=="Q")
+				array2[i]=11;
+			if(other.cards[i].getRank()=="K")
+				array2[i]=12;
+			if(other.cards[i].getRank()=="A")
+				array2[i]=13;
+	}
+		Arrays.sort(array2);
+		
+		for(int i = 4; i>=0; i--) {
+			if(array[i]>array2[i]) {
+				System.out.println("AIP wins");
+				i=-1;
+				a=10;
+			}
+			else if(array[i]<array2[i]) {
+				System.out.println("Opponent wins");
+				i=-1;
+				a=10;
+			}
+		}
+		if(a!=10) {
+			if(this.values[0]>other.values[0])
+				System.out.println("AIP wins");
+			else if(this.values[0]<other.values[0])
+				System.out.println("Opponent wins");
+			else
+				System.out.println("It's a draw");
+		}
+			
+		
+	}
+	
+	else if(this.typeOfHand()==8) {
+		for(int i = 1; i<5; i++) {
+			if(this.cards[0].getRank()==this.cards[i].getRank())
+				x=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[1].getRank()==this.cards[i].getRank() && i!=1)
+				y=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[2].getRank()==this.cards[i].getRank() && i!=2)
+				z=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[3].getRank()==this.cards[i].getRank() && i!=3)
+				a=1;
+		}
+		
+		if(x==0)
+			this.values[0]=-1;
+		else if(y==0)
+			this.values[1]=-1;
+		else if(z==0)
+			this.values[2]=-1;
+		else if(a==0)
+			this.values[3]=-1;
+		else
+			this.values[4]=-1;
+		
+		x=0; y=0; z=0; a=0;
+		
+		for(int i = 1; i<5; i++) {
+			if(other.cards[0].getRank()==other.cards[i].getRank())
+				x=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[1].getRank()==other.cards[i].getRank() && i!=1)
+				y=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[2].getRank()==other.cards[i].getRank() && i!=2)
+				z=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[3].getRank()==other.cards[i].getRank() && i!=3)
+				a=1;
+		}
+		
+		if(x==0)
+			other.values[0]=-1;
+		else if(y==0)
+			other.values[1]=-1;
+		else if(z==0)
+			other.values[2]=-1;
+		else if(a==0)
+			other.values[3]=-1;
+		else
+			other.values[4]=-1;
+		
+		Arrays.sort(this.values);
+		Arrays.sort(other.values);
+		
+		if(this.values[4]>other.values[4])
+			System.out.println("AIP wins");
+		else if(this.values[4]<other.values[4])
+			System.out.println("Opponent wins");
+		else
+			System.out.println("It's a draw");
+	}
+	
+	else if(this.typeOfHand()==9) {
+		for(int i = 1; i<5; i++) {
+			if(this.cards[0].getRank()==this.cards[i].getRank())
+				x=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[1].getRank()==this.cards[i].getRank() && i!=1)
+				y=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[2].getRank()==this.cards[i].getRank() && i!=2)
+				z=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(this.cards[3].getRank()==this.cards[i].getRank() && i!=3)
+				a=1;
+		}
+		for(int i = 1; i<5; i++) {
+			if(this.cards[4].getRank()==this.cards[i].getRank())
+				n=1;
+		}
+		
+		if(x==0)
+			this.values[0]=-1;
+		if(y==0)
+			this.values[1]=-1;
+		if(z==0)
+			this.values[2]=-1;
+		if(a==0)
+			this.values[3]=-1;
+		if(n==0)
+			this.values[4]=-1;
+		
+		x=0; y=0; z=0; a=0; n=0;
+		
+		for(int i = 1; i<5; i++) {
+			if(other.cards[0].getRank()==other.cards[i].getRank())
+				x=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[1].getRank()==other.cards[i].getRank() && i!=1)
+				y=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[2].getRank()==other.cards[i].getRank() && i!=2)
+				z=1;
+		}
+		for(int i = 0; i<5; i++) {
+			if(other.cards[3].getRank()==other.cards[i].getRank() && i!=3)
+				a=1;
+		}
+		for(int i = 0; i<4; i++) {
+			if(other.cards[4].getRank()==other.cards[i].getRank())
+				n=1;
+		}
+		
+		if(x==0)
+			other.values[0]=-1;
+		if(y==0)
+			other.values[1]=-1;
+		if(z==0)
+			other.values[2]=-1;
+		if(a==0)
+			other.values[3]=-1;
+		if(n==0)
+			other.values[4]=-1;
+		
+		Arrays.sort(this.values);
+		Arrays.sort(other.values);
+		
+		if(this.values[4]>other.values[4])
+			System.out.println("AIP wins");
+		else if(this.values[4]<other.values[4])
+			System.out.println("Opponent wins");
+		else
+			System.out.println("It's a draw");
+	}
+		
+	else {
+		Arrays.sort(this.values);
+		Arrays.sort(other.values);
+		
+		if(this.values[4]>other.values[4])
+			System.out.println("AIP wins");
+		else if(this.values[4]<other.values[4])
+			System.out.println("Opponent wins");
+		else
+			System.out.println("It's a draw");
+	}
+}
+
+public int winner(Hand other) {
+
+	if(this.typeOfHand()<other.typeOfHand()) {
+		System.out.println("AIP wins");
+		return 2;
+	}
+	else if(this.typeOfHand()>other.typeOfHand()) {
+		System.out.println("Opponent wins");
+		return 1;
+	}
+	else {
+		tieBreaker(other);
+		return 0;
+	}
+	}
 
 } // end of Hand class

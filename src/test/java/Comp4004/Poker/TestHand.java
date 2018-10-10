@@ -204,16 +204,17 @@ public class TestHand extends TestCase {
 	}
 
 	public void testWinner() {
-		Hand opponent, AIP = new Hand();
+		Hand opponent = new Hand();
+		Hand AIP = new Hand();
 		//One pair for opponent
 		opponent.cards[0].rank="2"; opponent.cards[1].rank="6"; opponent.cards[2].rank="6"; opponent.cards[3].rank="8"; opponent.cards[4].rank="J";
 		opponent.cards[0].suit="C"; opponent.cards[1].suit="D"; opponent.cards[2].suit="S"; opponent.cards[3].suit="C"; opponent.cards[4].suit="H";
 		opponent.values[0]=0; opponent.values[1]=17; opponent.values[2]=19; opponent.values[3]=24; opponent.values[4]=38;
-		//High card for AIP
-		AIP.cards[0].rank="2"; AIP.cards[1].rank="5"; AIP.cards[2].rank="6"; AIP.cards[3].rank="8"; AIP.cards[4].rank="J";
+		//One pair for AIP
+		AIP.cards[0].rank="2"; AIP.cards[1].rank="5"; AIP.cards[2].rank="8"; AIP.cards[3].rank="8"; AIP.cards[4].rank="J";
 		AIP.cards[0].suit="C"; AIP.cards[1].suit="D"; AIP.cards[2].suit="S"; AIP.cards[3].suit="C"; AIP.cards[4].suit="H";
-		AIP.values[0]=0; AIP.values[1]=13; AIP.values[2]=19; AIP.values[3]=24; AIP.values[4]=38;
-		assertEquals(1, AIP.winner(opponent));
+		AIP.values[0]=0; AIP.values[1]=13; AIP.values[2]=27; AIP.values[3]=24; AIP.values[4]=38;
+		assertEquals(0, AIP.winner(opponent));
 	}
 	
 } // end of TestHand class
